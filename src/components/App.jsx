@@ -1,7 +1,9 @@
-import { Counter } from "./Counter/Counter"
+import Feedback from "./Feedback/Feedback";
 
 export const App = () => {
   return (
-    <Counter />
+    <div>
+      <Feedback />
+    </div>
   );
 };
