@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Buttons } from "./Buttons/Buttons";
 import { Statistics } from "./Statistic/Statistics";
-
+import { Section } from "./Section/Section";
+import { Notification } from "./Notification.jsx/Notification";
 
 class Feedback extends Component {
     state = {
@@ -28,12 +29,17 @@ class Feedback extends Component {
         const { good, neutral, bad } = this.state;
         return (
             <>
-                <Buttons options={Object.keys(this.state)} onLeaveFeedBack={this.leaveFeedback} />
-
-                <Statistics good={good} neutral={neutral} bad={bad} total={this.countTOtalFeedback()} positivePercentage={this.countPositiveFeedbackPercentage()} />
+                <Section title="Please leave feedbck">
+                    <Buttons options={Object.keys(this.state)} onLeaveFeedback={this.leaveFeedback} />
+                </Section>
+                <Section title="Statistics">
+                    {this.countTOtalFeedback() ?
+                        (<Statistics good={good} neutral={neutral} bad={bad} total={this.countTOtalFeedback()} positivePercentage={this.countPositiveFeedbackPercentage()} />) :
+                        (<Notification message="No feedback given" />)}
+                </Section>             
             </>
         );
-    }
-}
+    }   
+};
 
 export default Feedback;

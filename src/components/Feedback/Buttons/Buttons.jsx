@@ -1,11 +1,18 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { ButtonContainer, Button } from "./Buttons.styled";
 
 export const Buttons = ({ options, onLeaveFeedback }) => {
     return (
-        <div>
+        <ButtonContainer>
             {options.map((option) => (
-                <button type="button" key={option} onClick={() => onLeaveFeedback(option)}>{option}</button>
+                <Button type="button" key={option} onClick={() => onLeaveFeedback(option)}>{option}</Button>
             ))}
-        </div>
+        </ButtonContainer>
     )
+};
+
+Buttons.propTypes = {
+    options: PropTypes.array.isRequired,
+    onLeaveFeedback: PropTypes.func.isRequired,
 };
