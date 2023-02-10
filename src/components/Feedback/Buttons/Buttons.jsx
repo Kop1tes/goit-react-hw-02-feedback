@@ -13,6 +13,6 @@ export const Buttons = ({ options, onLeaveFeedback }) => {
 };
 
 Buttons.propTypes = {
-    options: PropTypes.array.isRequired,
+    options: PropTypes.arrayOf(PropTypes.string),
     onLeaveFeedback: PropTypes.func.isRequired,
 };
